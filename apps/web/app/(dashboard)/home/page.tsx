@@ -10,7 +10,6 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-10">
-      {/* 1. Dashboard Welcome */}
       <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-4xl font-bold tracking-tight text-white">Discover Events</h1>
@@ -47,8 +46,7 @@ export default async function HomePage() {
 
             <CardContent className="px-5 pb-2">
               <div className="flex items-center gap-2 text-sm text-zinc-400">
-                <MapPin size={14} className="text-zinc-500" />
-                <span className="truncate">{event.location}</span>
+                {event.description}
               </div>
             </CardContent>
 

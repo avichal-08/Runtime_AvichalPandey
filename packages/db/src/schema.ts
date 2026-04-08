@@ -103,13 +103,25 @@ export const tickets = pgTable("ticket", {
   qrIdx: index("ticket_qr_data_idx").on(table.qrCodeData),
 }));
 
-export const eventRelations = relations(events, ({ many, one }) => ({
-  bookings: many(bookings),
-  organizer: one(users, { fields: [events.organizerId], references: [users.id] }),
+export const bookingsRelations = relations(bookings, ({ one, many }) => ({
+  event: one(events, {
+    fields: [bookings.eventId],
+    references: [events.id],
+  }),
+  user: one(users, {
+    fields: [bookings.userId],
+    references: [users.id],
+  }),
+  tickets: many(tickets),
 }));
 
-export const bookingRelations = relations(bookings, ({ one, many }) => ({
-  event: one(events, { fields: [bookings.eventId], references: [events.id] }),
-  user: one(users, { fields: [bookings.userId], references: [users.id] }),
-  tickets: many(tickets),
+export const ticketsRelations = relations(tickets, ({ one }) => ({
+  booking: one(bookings, {
+    fields: [tickets.bookingId],
+    references: [bookings.id],
+  }),
+}));
+
+export const eventsRelations = relations(events, ({ many }) => ({
+  bookings: many(bookings),
 }));

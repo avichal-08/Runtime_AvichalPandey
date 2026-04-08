@@ -1,15 +1,13 @@
 {
-  "name": "@repo/db",
+  "name": "@repo/queue",
   "version": "1.0.0",
   "description": "",
+  "main": "src/index.ts",
   "type": "module",
   "private": true,
-  "types": "./src/index.ts",
-  "module": "./src/index.ts",
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/bun": "latest",
-    "drizzle-kit": "^0.31.10"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -18,7 +16,8 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.2",
-    "next-auth": "^4.24.13"
+    "@repo/db": "workspace:*",
+    "bullmq": "^5.73.1",
+    "ioredis": "^5.10.1"
   }
 }
