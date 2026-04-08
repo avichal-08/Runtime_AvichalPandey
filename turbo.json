@@ -16,6 +16,13 @@
     "dev": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "env": [
+        "DATABASE_URL",
+        "REDIS_TCP_URL",
+        "NEXTAUTH_SECRET",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ]
   }
 }
