@@ -4,7 +4,7 @@ export function useEventSocket(eventId: string, initialSeats: number) {
   const [availableSeats, setAvailableSeats] = useState(initialSeats);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080");
+    const socket = new WebSocket("https://eventra-sxic.onrender.com");
 
     socket.onopen = () => {
       socket.send(JSON.stringify({ type: "SUBSCRIBE", eventId }));

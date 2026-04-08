@@ -9,8 +9,8 @@ import Link from "next/link";
 export function BookingButton({ 
   eventId, 
   availableSeats, 
-  currentUserId, // Add this prop
-  eventSlug      // Add this prop
+  currentUserId,
+  eventSlug 
 }: { 
   eventId: string, 
   availableSeats: number, 
@@ -23,10 +23,10 @@ export function BookingButton({
 
   useEffect(() => {
   let isMounted = true;
-  const socket = new WebSocket("ws://localhost:8080");
+  const socket = new WebSocket("https://eventra-sxic.onrender.com");
 
   socket.onopen = () => {
-    console.log("🔌 Connected to Realtime Engine");
+    console.log("Connected to Realtime Engine");
     socket.send(JSON.stringify({ type: "SUBSCRIBE", eventId }));
   };
 
@@ -34,7 +34,7 @@ export function BookingButton({
     if (!isMounted) return;
     
     const data = JSON.parse(event.data);
-    console.log("📩 WS RECEIVED:", data);
+    console.log("WS RECEIVED:", data);
 
     if (data.type === "SEAT_UPDATE") {
   const incomingId = String(data.confirmedUserId).trim();
