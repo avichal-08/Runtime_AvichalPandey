@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Scan, BarChart3, Users, CheckCircle } from "lucide-react";
 import { ScannerComponent } from "@/components/organizer/scanner-component";
 
-export default async function ManageEventPage({ params }: { params: { id: string } }) {
+export default async function ManageEventPage({ params }: { params: Promise < { id: string } >}) {
   const { id } = await params;
   const session = await auth();
   if (!session?.user?.id) redirect("/login");

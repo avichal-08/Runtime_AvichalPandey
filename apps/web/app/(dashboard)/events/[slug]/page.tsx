@@ -10,7 +10,7 @@ import { LiveSeatBadge } from "@/components/events/live-seat-badge";
 
 import { auth } from "@/auth";
 
-export default async function EventDetailPage({ params }: { params: { slug: string } }) {
+export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   const session = await auth();

@@ -3,7 +3,7 @@ import { db, tickets, bookings } from "@repo/db";
 import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, { params }: { params: Promise< { id: string } >}) {
   const { id: eventId } = await params;
   const session = await auth();
   if (!session) return new NextResponse("Unauthorized", { status: 401 });
