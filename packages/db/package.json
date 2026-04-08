@@ -1,0 +1,22 @@
+{
+  "name": "@repo/db",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "private": true,
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "next-auth": "^4.24.13"
+  }
+}
