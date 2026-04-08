@@ -97,6 +97,4 @@ This approach can be extended to larger-scale ticketing platforms and other high
 
 ---
 
-## 🔗 Additional Links (Optional)  
-
-**Presentation:** [Add Link]  
+## **[Live Demo](https://eventra-five-theta.vercel.app/)** 
