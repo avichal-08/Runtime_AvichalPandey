@@ -1,159 +1,102 @@
-# Turborepo starter
+# Kalpathon Hackathon Submission
 
-This Turborepo starter is maintained by the Turborepo core team.
+## Team Name  
+**Runtime**
 
-## Using this example
+---
 
-Run the following command:
+## Project Name  
+**Eventra**
 
-```sh
-npx create-turbo@latest
-```
+---
 
-## What's inside?
+## Selected Track  
+**Web Development**
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## Selected Problem Statement (PS)  
+**Hyper-Local Event Ticketing Startup**
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+---
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Team Leader  
+**Name:** Avichal Pandey  
+**Phone:** 9695284168  
 
-### Utilities
+---
 
-This Turborepo has some additional tools already setup for you:
+## Team Members & Roles  
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+| Name | Role |
+|------|------|
+| Avichal Pandey | Full Stack Developer |
+| Ayush Mishra | Frontend Developer |
+| Prince Kumar | Frontend Developer |
 
-### Build
+---
 
-To build all apps and packages, run the following command:
+## Project Description  
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+### **Problem**  
+Existing ticketing platforms are designed for large-scale events and enterprise use cases. They are often too complex, expensive, and inefficient for hyper-local events such as college fests, community meetups, and small-scale gatherings.
 
-```sh
-cd my-turborepo
-turbo build
-```
+Ticket booking systems often fail under high demand. Users experience issues like double bookings, overselling, and server crashes due to concurrent requests hitting the system simultaneously. This leads to an unreliable and unfair booking experience, especially for hyper-local events where demand spikes are unpredictable.
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo build
-bun dlx turbo build
-bun exec turbo build
-```
+### **Solution**  
+Eventra introduces a queue-based ticketing system that ensures controlled and fair booking under high demand. Instead of processing all requests directly, booking requests are routed through a queue and processed sequentially. This eliminates race conditions and guarantees consistency.  
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+The platform also provides real-time seat updates using WebSockets, ensuring users always see accurate availability.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+---
 
-```sh
-turbo build --filter=docs
-```
+### **Key Features**  
 
-Without global `turbo`:
+- **Queue-Based Booking System**  
+  All booking requests are processed via BullMQ, preventing race conditions and ensuring fair allocation.
 
-```sh
-npx turbo build --filter=docs
-bun exec turbo build --filter=docs
-bun exec turbo build --filter=docs
-```
+- **Real-Time Seat Updates**  
+  WebSocket-based updates allow users to see seat availability change instantly across all clients.
 
-### Develop
+- **Overbooking Prevention**  
+  Sequential job processing ensures that available seats never go below zero.
 
-To develop all apps and packages, run the following command:
+- **QR-Based Ticketing**  
+  Each booking generates a unique QR code for seamless event entry and verification.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+- **High-Demand Handling**  
+  Designed to remain stable and responsive even during traffic spikes.
 
-```sh
-cd my-turborepo
-turbo dev
-```
+---
 
-Without global `turbo`, use your package manager:
+### **Tech Stack**  
 
-```sh
-cd my-turborepo
-npx turbo dev
-bun exec turbo dev
-bun exec turbo dev
-```
+- **Frontend:** Next.js, Tailwind CSS, shadcn/ui  
+- **Backend:** Next.js API Routes, Express  
+- **Runtime:** Bun  
+- **Database:** PostgreSQL (Drizzle ORM)  
+- **Queue System:** BullMQ  
+- **Realtime:** WebSockets (ws)  
+- **Cache & Messaging:** Redis (Upstash)  
+- **Authentication:** NextAuth  
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+### **Impact**  
 
-```sh
-turbo dev --filter=web
-```
+Eventra improves the reliability and fairness of ticket booking systems, particularly for local events where infrastructure is often limited.  
 
-Without global `turbo`:
+By introducing queue-based processing and real-time feedback:
+- Users get a transparent and consistent booking experience  
+- Event organizers avoid overselling and operational issues  
+- Systems remain stable under high demand  
 
-```sh
-npx turbo dev --filter=web
-bun exec turbo dev --filter=web
-bun exec turbo dev --filter=web
-```
+This approach can be extended to larger-scale ticketing platforms and other high-concurrency systems.
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 🔗 Additional Links (Optional)  
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-bun exec turbo login
-bun exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-bun exec turbo link
-bun exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+**Presentation:** [Add Link]  
