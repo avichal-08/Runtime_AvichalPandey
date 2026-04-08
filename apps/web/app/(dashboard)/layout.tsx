@@ -10,20 +10,18 @@ export default async function DashboardLayout({
   const session = await auth();
 
   if (!session) {
-    redirect("/login");
+    redirect("/login"); 
   }
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <aside className="fixed inset-y-0 left-0 z-50 hidden w-72 border-r border-zinc-800 bg-zinc-950/50 backdrop-blur-xl md:block">
-        <Sidebar user={session.user} />
-      </aside>
+  <div className="flex min-h-screen bg-background text-foreground">
+    <Sidebar user={session.user} />
 
-      <main className="flex-1 md:ml-72">
-        <div className="mx-auto max-w-7xl p-6 lg:p-10">
-          {children}
-        </div>
-      </main>
-    </div>
-  );
+    <main className="flex-1 lg:ml-64 pt-16 lg:pt-0">
+      <div className="mx-auto max-w-7xl p-6 lg:p-10">
+        {children}
+      </div>
+    </main>
+  </div>
+);
 }
