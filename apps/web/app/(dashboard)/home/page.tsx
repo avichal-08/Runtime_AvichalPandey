@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Users, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -29,16 +30,20 @@ export default async function HomePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allEvents.map((event) => {
+          // Fallback to static banner if no imageUrl is present in DB
           const displayImage = event.imageUrl || STATIC_BANNER;
 
           return (
             <Card key={event.id} className="group relative overflow-hidden border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40 transition-all duration-500 backdrop-blur-sm rounded-[2rem]">
-             
+              {/* Image Container with Aura Blur */}
               <div className="aspect-[16/10] w-full bg-zinc-900 relative overflow-hidden">
-               
                  <div 
                     className="absolute inset-0 opacity-20 blur-2xl scale-150 transition-transform duration-700 group-hover:scale-110" 
-                    style={{ backgroundImage: `url(${displayImage})`, backgroundSize: 'cover' }}
+                    style={{ 
+                      backgroundImage: `url(${displayImage})`, 
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
                  />
                  
                  <img 
@@ -90,9 +95,11 @@ export default async function HomePage() {
 
       {allEvents.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 border-2 border-dashed border-zinc-900 rounded-[3rem] bg-zinc-900/10">
-          <p className="text-zinc-600 font-bold uppercase tracking-widest text-sm mb-6">Zero Events Found</p>
+          <p className="text-zinc-600 font-bold uppercase tracking-widest text-sm mb-6">
+            Zero Events Found
+          </p>
           <Link href="/events/create">
-            <Button className="bg-white text-black hover:bg-zinc-200 rounded-2xl px-8 h-14 font-black italic uppercase tracking-tighter">
+            <Button className="bg-white text-black hover:bg-zinc-200 rounded-2xl px-8 h-14 font-black italic uppercase tracking-tighter transition-all active:scale-95">
               Host the first one
             </Button>
           </Link>
